@@ -1,0 +1,4 @@
+CREATE POLICY "public read store assets" ON storage.objects FOR SELECT USING (bucket_id IN ('product-images','brand-assets'));
+CREATE POLICY "admin insert store assets" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id IN ('product-images','brand-assets') AND public.is_admin());
+CREATE POLICY "admin update store assets" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id IN ('product-images','brand-assets') AND public.is_admin()) WITH CHECK (bucket_id IN ('product-images','brand-assets') AND public.is_admin());
+CREATE POLICY "admin delete store assets" ON storage.objects FOR DELETE TO authenticated USING (bucket_id IN ('product-images','brand-assets') AND public.is_admin());
