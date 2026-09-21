@@ -59,7 +59,7 @@ function Home() {
       )}
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden border-b border-white/6">
         <img
           src={heroImage}
           alt="Lanche artesanal da Dino's"
@@ -67,12 +67,13 @@ function Home() {
           height={1200}
           className="absolute inset-0 h-full w-full object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/88 to-background/35" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,oklch(0.79_0.166_68_/_0.14),transparent_28rem)]" />
+        <div className="relative mx-auto grid max-w-6xl items-end gap-10 px-4 py-20 sm:py-28 lg:grid-cols-[1.2fr_0.8fr]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-black/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary backdrop-blur-sm">
             <Flame className="h-3.5 w-3.5" /> Saubara · Bahia
           </span>
-          <h1 className="mt-5 max-w-2xl font-display text-5xl leading-[0.95] tracking-wide sm:text-7xl">
+          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.9] tracking-wide sm:text-7xl lg:text-8xl">
             Bateu a fome? <span className="ember-text">A Dino's resolve.</span>
           </h1>
           <p className="mt-4 max-w-lg text-base text-muted-foreground sm:text-lg">
@@ -92,7 +93,7 @@ function Home() {
               <Link to="/cardapio">Ver cardápio</Link>
             </Button>
           </div>
-          <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted-foreground">
+          <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground">
             <span className="flex items-center gap-2">
               <Bike className="h-4 w-4 text-primary" /> Delivery
             </span>
@@ -106,6 +107,16 @@ function Home() {
             )}
           </div>
         </div>
+        <div className="glass-panel hidden rounded-[1.75rem] p-6 lg:block">
+          <p className="section-kicker">Peça sem complicação</p>
+          <p className="mt-3 font-display text-3xl tracking-wide">Seu próximo pedido começa aqui.</p>
+          <div className="mt-6 grid gap-3 text-sm text-muted-foreground">
+            <div className="rounded-xl bg-white/4 p-3">Escolha seus favoritos no cardápio</div>
+            <div className="rounded-xl bg-white/4 p-3">Personalize com adicionais e observações</div>
+            <div className="rounded-xl bg-white/4 p-3">Finalize por entrega ou retirada</div>
+          </div>
+        </div>
+      </div>
       </section>
 
       {/* Banners */}
@@ -139,8 +150,9 @@ function Home() {
       )}
 
       {/* Categorias */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
-        <h2 className="font-display text-3xl tracking-wide">Categorias</h2>
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <p className="section-kicker">Explore</p>
+        <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-4xl">Escolha sua fome</h2>
         {categories.length === 0 ? (
           <p className="mt-3 text-sm text-muted-foreground">
             Nenhuma categoria cadastrada ainda. Cadastre pelo painel administrativo.
@@ -152,7 +164,7 @@ function Home() {
                 key={c.id}
                 to="/cardapio"
                 search={{ categoria: c.slug }}
-                className="shrink-0 rounded-full border border-border/70 bg-card px-5 py-3 font-display text-lg tracking-wide transition-colors hover:border-primary hover:text-primary"
+                className="shrink-0 rounded-2xl border border-white/7 bg-card/80 px-5 py-4 font-display text-lg tracking-wide shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-card hover:text-primary"
               >
                 {c.name}
               </Link>
@@ -275,11 +287,16 @@ function ProductSection({
   onSelect: (p: Product) => void;
 }) {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-6">
-      <h2 className="flex items-center gap-2 font-display text-3xl tracking-wide">
+    <section className="mx-auto max-w-6xl px-4 py-10">
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <p className="section-kicker">Mais pedidos</p>
+          <h2 className="mt-2 flex items-center gap-2 font-display text-3xl tracking-wide sm:text-4xl">
         {icon}
-        {title}
-      </h2>
+          {title}
+          </h2>
+        </div>
+      </div>
       {products.length === 0 ? (
         <p className="mt-3 text-sm text-muted-foreground">{empty}</p>
       ) : (
