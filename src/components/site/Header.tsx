@@ -11,22 +11,22 @@ export function Header() {
   const isOpen = settings?.is_open ?? true;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/8 bg-background/88 shadow-[0_10px_35px_rgba(0,0,0,0.16)] backdrop-blur-2xl">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3">
         <Link to="/" className="flex min-w-0 items-center gap-3">
           {settings?.logo_url ? (
             <img
               src={settings.logo_url}
               alt={settings?.name ?? "Dino's"}
-              className="h-10 w-10 shrink-0 rounded-xl object-cover"
+              className="h-11 w-11 shrink-0 rounded-2xl object-cover shadow-lg shadow-black/20 ring-1 ring-white/10"
             />
           ) : (
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary font-display text-2xl leading-none text-primary-foreground">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary font-display text-2xl leading-none text-primary-foreground shadow-lg shadow-primary/20">
               D
             </span>
           )}
           <span className="min-w-0">
-            <span className="block truncate font-display text-2xl leading-none tracking-wide">
+            <span className="block truncate font-display text-[1.65rem] leading-none tracking-wide">
               {settings?.name ?? "Dino's"}
             </span>
             <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
@@ -38,7 +38,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <span
             className={cn(
-              "hidden rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider sm:inline-block",
+              "hidden rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] sm:inline-block",
               isOpen
                 ? "bg-success/15 text-success"
                 : "bg-destructive/15 text-destructive",
@@ -58,7 +58,7 @@ export function Header() {
           <Link
             to="/carrinho"
             aria-label="Abrir carrinho"
-            className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-secondary transition-transform hover:scale-105 active:scale-95"
+            className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/8 bg-secondary/90 transition-all hover:border-primary/40 hover:bg-secondary hover:scale-105 active:scale-95"
           >
             <ShoppingBag className="h-5 w-5" />
             {count > 0 && (
