@@ -18,11 +18,16 @@ export function ProductCard({
       type="button"
       disabled={unavailable}
       onClick={() => onSelect(product)}
+      aria-label={
+        unavailable
+          ? `${product.name}, indisponível`
+          : `Ver detalhes de ${product.name}`
+      }
       className={cn(
-        "group grid w-full grid-cols-[minmax(0,1fr)_auto] items-stretch gap-4 rounded-2xl border border-border/70 bg-card p-3 text-left transition-all",
+        "group grid w-full grid-cols-[minmax(0,1fr)_auto] items-stretch gap-4 rounded-2xl border border-border/70 bg-card p-3.5 text-left shadow-sm transition-all duration-200",
         unavailable
           ? "cursor-not-allowed opacity-60"
-          : "hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-lg hover:shadow-black/30 active:scale-[0.99]",
+          : "hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-xl hover:shadow-black/25 active:scale-[0.99]",
       )}
     >
       <div className="flex min-w-0 flex-col justify-between gap-2 py-1">
@@ -41,7 +46,7 @@ export function ProductCard({
             )}
           </div>
           {product.description && (
-            <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{product.description}</p>
+            <p className="mt-1 line-clamp-2 text-sm leading-5 text-muted-foreground">{product.description}</p>
           )}
         </div>
         <div className="flex items-baseline gap-2">
@@ -66,11 +71,14 @@ export function ProductCard({
           />
         ) : (
           <span className="grid h-full w-full place-items-center text-muted-foreground">
-            <ImageIcon className="h-6 w-6" />
+            <ImageIcon className="h-6 w-6" aria-hidden="true" />
           </span>
         )}
         {!unavailable && (
-          <span className="absolute bottom-1 right-1 grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow">
+          <span
+            aria-hidden="true"
+            className="absolute bottom-1 right-1 grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+          >
             <Plus className="h-4 w-4" />
           </span>
         )}

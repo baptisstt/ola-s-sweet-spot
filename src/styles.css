@@ -4,11 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Dino's design system — dark graphite base, warm ember accents.
- * All colors use oklch and are exposed as semantic tokens.
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -109,11 +104,38 @@
     overflow-x: hidden;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-background);
+    min-width: 320px;
+    background:
+      radial-gradient(circle at 15% -10%, oklch(0.79 0.166 68 / 0.08), transparent 34rem),
+      radial-gradient(circle at 100% 10%, oklch(0.6 0.208 29 / 0.06), transparent 28rem),
+      var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: oklch(0.79 0.166 68 / 0.28);
+    color: var(--color-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 3px;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
   }
 
   h1,
@@ -122,6 +144,24 @@
   .font-display {
     font-family: var(--font-display);
     letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .surface-elevated {
+    background: linear-gradient(
+      145deg,
+      oklch(0.235 0.012 60 / 0.98),
+      oklch(0.19 0.01 60 / 0.98)
+    );
+    box-shadow:
+      0 18px 50px oklch(0 0 0 / 0.18),
+      inset 0 1px 0 oklch(1 0 0 / 0.04);
+  }
+
+  .scrollbar-subtle {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
   }
 }
 
@@ -137,4 +177,18 @@
 
 @utility safe-bottom {
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
