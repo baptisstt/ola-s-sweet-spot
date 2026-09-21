@@ -69,8 +69,6 @@
   --accent-foreground: oklch(0.98 0.01 80);
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
-  --success: oklch(0.68 0.16 150);
-  --success-foreground: oklch(0.16 0.02 150);
   --border: oklch(0.32 0.012 60);
   --input: oklch(0.32 0.012 60);
   --ring: oklch(0.79 0.166 68);
@@ -191,4 +189,9 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Hide Lovable badge */
+#lovable-badge {
+  display: none !important;
 }
