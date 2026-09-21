@@ -77,14 +77,14 @@ function Menu() {
         <h1 className="font-display text-4xl tracking-wide sm:text-5xl">Cardápio</h1>
         <p className="mt-1 text-sm text-muted-foreground">Bateu a fome? A Dino's resolve.</p>
 
-        <div className="sticky top-[68px] z-30 -mx-4 mt-5 bg-background/90 px-4 py-3 backdrop-blur-xl">
+        <div className="sticky top-[68px] z-30 -mx-4 mt-6 border-y border-white/5 bg-background/92 px-4 py-4 shadow-[0_12px_35px_rgba(0,0,0,0.14)] backdrop-blur-2xl">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={term}
               onChange={(e) => setTerm(e.target.value)}
               placeholder="Buscar no cardápio…"
-              className="h-12 rounded-full pl-10"
+              className="h-12 rounded-2xl border-white/8 bg-card/90 pl-10 shadow-inner placeholder:text-muted-foreground/70"
             />
           </div>
 
@@ -94,7 +94,7 @@ function Menu() {
                 type="button"
                 onClick={() => navigate({ search: {} })}
                 className={cn(
-                  "shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
+                  "shrink-0 rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition-all",
                   !activeCategory
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border/70 bg-card text-muted-foreground",
@@ -137,7 +137,10 @@ function Menu() {
         <div className="mt-6 space-y-10">
           {grouped.map(({ category, items }) => (
             <section key={category.id}>
-              <h2 className="font-display text-3xl tracking-wide">{category.name}</h2>
+              <div className="mb-1 flex items-center gap-3">
+                <span className="h-px w-6 bg-primary" />
+                <h2 className="font-display text-3xl tracking-wide sm:text-4xl">{category.name}</h2>
+              </div>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 {items.map((p) => (
                   <ProductCard key={p.id} product={p} onSelect={setSelected} />
