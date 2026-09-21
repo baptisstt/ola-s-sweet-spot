@@ -106,7 +106,6 @@ function Home() {
               </span>
             )}
           </div>
-        </div>
         <div className="glass-panel hidden rounded-[1.75rem] p-6 lg:block">
           <p className="section-kicker">Peça sem complicação</p>
           <p className="mt-3 font-display text-3xl tracking-wide">Seu próximo pedido começa aqui.</p>
