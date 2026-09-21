@@ -19,16 +19,16 @@ export function ProductCard({
       disabled={unavailable}
       onClick={() => onSelect(product)}
       className={cn(
-        "group grid w-full grid-cols-[minmax(0,1fr)_auto] items-stretch gap-4 rounded-2xl border border-border/70 bg-card p-3 text-left transition-all",
+        "group grid w-full grid-cols-[minmax(0,1fr)_auto] items-stretch gap-4 rounded-[1.35rem] border border-white/7 bg-card/95 p-3.5 text-left shadow-[0_10px_35px_rgba(0,0,0,0.12)] transition-all",
         unavailable
           ? "cursor-not-allowed opacity-60"
-          : "hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-lg hover:shadow-black/30 active:scale-[0.99]",
+          : "hover:-translate-y-1 hover:border-primary/50 hover:bg-card hover:shadow-xl hover:shadow-black/25 active:scale-[0.99]",
       )}
     >
       <div className="flex min-w-0 flex-col justify-between gap-2 py-1">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-display text-xl leading-tight tracking-wide">{product.name}</h3>
+            <h3 className="font-display text-[1.35rem] leading-tight tracking-wide">{product.name}</h3>
             {product.featured && (
               <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
                 Destaque
@@ -56,7 +56,7 @@ export function ProductCard({
         </div>
       </div>
 
-      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-secondary sm:h-28 sm:w-28">
+      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-secondary shadow-inner sm:h-28 sm:w-28">
         {product.image_url ? (
           <img
             src={product.image_url}
@@ -70,7 +70,7 @@ export function ProductCard({
           </span>
         )}
         {!unavailable && (
-          <span className="absolute bottom-1 right-1 grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow">
+          <span className="absolute bottom-2 right-2 grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-black/25 ring-2 ring-background/70">
             <Plus className="h-4 w-4" />
           </span>
         )}
